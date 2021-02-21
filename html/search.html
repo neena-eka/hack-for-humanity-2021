@@ -22,12 +22,14 @@
       // });
       request.open('GET', apiUrl);
       request.onload = function () {
-        alert(this.response);
-         var data = JSON.stringify(this.response);
+        //alert(this.response);
+        var data=JSON.parse(this.response);
+        //var newdata = JSON.parse(data);
+         //var data = JSON.stringify(this.response);
          //alert(data);
          if (request.status >= 200 && request.status < 400)
          {
-           alert(data[0].length);
+           alert(data[0]);
            // data.forEach((id) => {
            //   alert(id.name);
            //   console.log(id.name);

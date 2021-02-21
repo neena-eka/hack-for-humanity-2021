@@ -25,4 +25,4 @@ The job search tab of our website is designed to help people who were formerly i
 
 ## Meet the Team!
 
-Maddie Waldie, Neena Ekanathan, Kamya Krishnan, and Divya Syal are freshman Computer Science and Engineering majors at Santa Clara University. They completed this project as a part of "Hack for Humanity."
+Maddie Waldie, Neena Ekanathan, Kamya Krishnan, and Divya Syal are freshman Computer Science and Engineering majors at Santa Clara University. They completed this project as a part of "Hack for Humanity," an event designed to solve pressing social issues using creativity and code.
