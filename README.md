@@ -27,6 +27,10 @@ As stated above, many former prisoners experience difficulty finding a job after
 
 The job search tab of our website is designed to help people who were formerly incarcerated find jobs. Upon entering their location, this tab allows the user to find resources in their area that can help with employment.
 
+##Tools
+
+HTML, CSS, JavaScript, SQL, Microsoft Azure (SQL Database, Cognitive Search Service), Google Maps API
+
 ## Meet the Team!
 
 Maddie Waldie, Neena Ekanathan, Kamya Krishnan, and Divya Syal are freshman Computer Science and Engineering majors at Santa Clara University. They completed this project as a part of "Hack for Humanity," an event designed to solve pressing social issues using creativity and code.
