@@ -7,11 +7,14 @@
 <html>
         <head>
                 <link rel="stylesheet" href="../css/style.css">
+                <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+                <script src="http://maps.google.com/maps/api/js?sensor=false"
+                        type="text/javascript"></script>
         </head>
         <body>
                 <!-- Title bar showing name -->
                 <title>Hack for Humanity</title>
-                <h1><a style="text-decoration:none" href= "../index.html">Hack for Humanity</a></h1>
+                <h1><a style="text-decoration:none; font-size: 60px;" href= "../index.html">ReEntry Resort</a></h1>
                 <hr>
                 <!-- Navigation bar -->
                 <ul class="navigationBar">
@@ -20,20 +23,103 @@
                   <li><a style="text-decoration:none" href="jobSearch.html">JobSearch</a></li>
                 </ul>
                 <hr>
+
+
+                <div id="map" style="width: 100%; height: 400px;"></div>
+
+                <script type="text/javascript">
+                  var locations = [
+                    ['Alameda County Career Center:555 Ralph Appezzato Memorial Parkway, Portable P, CA 94501 Phone: 510-748-2208', 37.779833,-122.2809, 1],
+                    ['Anaheim Jobs: 290 South Anaheim Blvd., Suite 100 Anaheim, CA 92805Phone: 714-765-4350', 33.833648681640625,-117.91328430175781 ,1 ],
+                    ['Contra Costa Career Center – Antioch:4545 Delta Fair Blvd Antioch, CA 94509 Phone: 925-706-4830', 38.004188537597656,-121.85248565673828 ,1 ],
+                    ['Foothill Emp/Training Connection :1207 E. Green Street Pasadena, CA 91106', 34.14459991455078,-118.12608337402344 ,1],
+                    ['Fresno County Workforce Connection:1900 Mariposa Mall, Suite 130 Fresno, CA 93721 559-499-3709', 36.73884201049805,-119.7855453491211 ,1],
+                    ['Golden Sierra Workforce Investment Board: 1919 Grass Valley Hwy, Suite 100 Auburn, CA 95603 Phone: 530-823-4635', 38.93000411987305,-121.08885192871094 , 1],
+                    ['Humboldt County: The Job Market (One Stop): 409 K Street Eureka Ca 95501 Phone: 707-441-JOBS ', 40.8033674,-124.1603086 ,1 ],
+                    ['Imperial County Centers Brawley One Stop: 860 Main St. Brawley, CA 92227 Phone: 760-344-2131', 32.978580474853516,-115.52654266357422 ,1],
+                    ['Kern, Inyo, Mono WIB  Career Services Center: 1600 East Belle Terrace Bakersfield, CA 93307 661-325-HIRE (4473)', 35.34685134887695,-118.97461700439453 ,1],
+                    ['Kings County One-Stop  Job Center: 124 N. Irwin Street Hanford, CA 93230 559-585-3532', 36.333946228027344,-119.6476821899414 ,1],
+                    ['City Of Los Angeles WIB WorkSource Center: 315 West 9th Street, Suite 101 Los Angeles, CA 90015 Phone: 213-629-5800', 34.04301452636719,-118.25711822509766 ,1],
+                    ['Los Angeles County WIB  Employment & Business Center: 5301 Whittier Blvd., 2nd Floor Los Angeles, CA 90022 Phone: 323-887-7122', 34.02067565917969,-118.15853881835938 ,1],
+                    ['Madera County WIB Workforce Center 441 E. Yosemite Avenue Madera, CA 93638 Phone: 559-662-4500', 36.96424865722656,-120.0560531616211,1],
+                    ['Marin County WIB Career Centers Marin Employment Connection: 120 N. Redwood Dr. 2nd fl. East San Rafael, CA 94903', 37.991318,-122.529779,1],
+                    ['Mendocino Works One-Stop: 631 South Orchard Ave Ukiah, CA 95482 Phone: 707-467-5900 Toll Free: 800-616-1196',39.1468272,-123.1985831 ,1],
+                    ['Merced WIB Workforce Investment: 1880 Wardrobe Ave. Merced, CA 95341 Phone: 209-724-2000', 37.295475006103516,-120.51714324951172 ,1],
+                    ['Monterey County WIB Career Center: Salinas Airport Business Park 730 La Guardia Street Salinas, CA 93905 Phone: 831-796-3600', 36.65800476074219,-121.61009979248047 ,1],
+                    ['Mother Lode Wib Job Connection: 245 New York Ranch Rd, Jackson CA 95642 Phone: 209-223-3341', 38.36009979248047,-120.76581573486328 ,1],
+                    ['Napa Valley WIB Business & Career Center: 650 Imperial Way, Suite 101 Napa, CA 94558', 38.3069627,-122.2835738 ,1],
+                    ['North Central Counties Career Centers Sutter County One Stop: 256 Wilbur Avenue Yuba City, CA 95992', 39.12994384765625,-121.61140441894531,1],
+                    ['North Valley Job Training NOVA: 505 West Olive Avenue, Sunnyvale, CA 94086 Phone: 408-730-7232', 37.37155532836914,-122.03836822509766 ,1],
+                    ['Oakland Workforce Comprehensive One-Stop: 1212 Broadway, 3rd Floor Oakland, CA 94612 Phone: 510-768-4400', 37.80643844604492,-122.26982879638672 ,1],
+                    ['Orange County WIB One-Stop Satellite: 6281 Beach Blvd Suite 302 Buena Park, CA 90621 Phone: 714-562-9200', 33.87407684326172,-117.99832153320312,1],
+                    ['Pacific Gateway Career Transition Center: 3447 Atlantic Avenue, 1st Floor Long Beach, CA 90807 Phone: 562-570-WORK (9675)', 33.8225212097168,-118.18502044677734 ,1],
+                    ['Richmond Works: 330 25th St. Richmond, CA 94804 Phone: 510-307-8014', 37.9358149,-122.3452573 ,1],
+                    ['Riverside County – Hemet: 1025 North State Street Hemet, CA 92543 Phone: 951-791-3500', 33.730798,-116.9716491 ,1],
+                    ['Sacramento Works WIB Career Centers BROADWAY: 915 Broadway Sacramento, CA 95818 Phone: 916-324-6202', 38.56402587890625,-121.50123596191406 ,1],
+
+                    ['BROADWAY: 915 Broadway Sacramento, CA 95818. 916-324-6202', 38.5641564, -121.5016071,1],
+                    ['Workforce Investment: 1111 San Felipe Road Hollister, CA 95023. 831-637-9293', 36.8722399, -121.4008331,1],
+                    ['Training Agency (SBETA): 600 N. Arrowhead Avenue, Suite 300 San Bernardino, CA 92401. 909-888-7881', 34.11200714111328, -117.2896499633789,1],
+                    ['Metro Career Center: 3910 University Avenue San Diego, CA 92105. 619-516-2200', 32.749568, -117.0944505,1],
+                    ['Career Link Center: 601 Jackson Street San Francisco, CA 94133. 415-677-7500', 37.79621, -122.405143,1],
+                    ['CHDC WorkNet Center: 631 E. Oak Street Lodi, CA 95240. 209-331-2081', 38.133025, -121.260181,1],
+                    ['Career One-Stop of San Luis Obispo: 880 Industrial Way San Luis Obispo, CA 93401. 805-903-1400', 35.25200271606445, -120.6422119140625,1],
+                    ['PeninsulaWorks: 271 92nd Street Daly City, CA 94014. Phone: 650-301-8440 Fax: 650-301-8455', 37.68968963623047, -122.47413635253906,1],
+                    ['Workforce Center: 1410 South Broadway Santa Maria. 805-614-1550', 34.9364885, -120.4362149,1],
+                    ['Career Center: 18 West Beach Street Watsonville, CA 95076. 831-763-8700', 36.9097994, -121.757638,1],
+                    ['work2future: 5730 Chambertin Drive San Jose, CA 95118. 408-794-1200', 37.238128, -121.894441,1],
+                    ['Workforce Investment: 2227 Capricorn Way, Suite 100 Santa Rosa, CA 95407. 707-565-8501', 38.42446517944336, -122.75084686279297,1],
+                    ['Career Center: 110 South La Brea Avenue Inglewood, CA 90301. 310-680-3700', 33.96271514892578, -118.35335540771484,1],
+                    ['SELACO WIB – Cerritos: 10900 East 183rd Street, Cerritos, CA 90703. Phone: 562-402-9336. Toll Free: 800-481-6555', 33.86565399169922, -118.10502624511719,1],
+                    ['Midtown Modesto: 629 12th Street Modesto, CA 95354-2424. Phone: 209-558-9675. Fax: 209-558-6143', 37.6383357, -120.9942411,1],
+                    ['Employment Connection: 4025 W. Noble Ave. Visalia, CA 93277. 559-713-5000', 36.3260377, -119.3359801,1],
+                    ['Verdugo Job Center: 1255 S. Central Ave. Glendale, CA 91204. 818-409-0476', 34.1303214, -118.2582095,1],
+                    ['Yolo County One Stop: 25 N. Cottonwood Street Woodland, CA 95695. 530-661-2750', 38.6853453, -121.793531,1],
+                    ['City of Santa Ana Work Center: 1000 E Santa Ana Blvd # 200 Santa Ana, CA 92701-3900. 714-565-2600', 33.7516237, -117.8564701,1]
+                  ];
+
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 5,
+                    center: new google.maps.LatLng(36.7783, -119.4179),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                  });
+
+                  var infowindow = new google.maps.InfoWindow();
+
+                  var marker, i;
+
+                  for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                      position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                      map: map
+                    });
+
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                      return function() {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(map, marker);
+                      }
+                    })(marker, i));
+                  }
+                </script>
+
+
+
+                <p>Use the map below to find an unemployment office near you! Below, you can also find a list of re-entry programs for California former offenders.</p>
+
+                <a href="http://jailstojobs.org/html/ca_training_benefits.html" style="float: left;">Jail to Jobs - California Training Benefits Program</a><br>
+                <a href="http://hirenetwork.org/content/california" style="float: left;">California National HIRE Network</a><br>
+                <a href="http://sandiego.networkofcare.org/veterans/services/agency.aspx?pid=CHANGEChoosingANewGenerationofExcellence_870_17_0" style="float: left;">CHANGE - Choosing A New Generation of Excellence</a><br>
+                <a href="http://www.cdcr.ca.gov/rehabilitation/female-offender-treatment-employment-program.html" style="float: left;">Female Offender Treatment and Employment Program</a><br>
+                <a href="http://pia.ca.gov/OffenderDevelopment/IEP.aspx" style="float: left;">California Prison Industry Authority - Inmate Employability Program</a><br>
+                <a href="http://www.secondchanceprogram.org/job-readiness-training/" style="float: left;">Second Chance</a><br>
+                <a href="http://www.cdcr.ca.gov/Parole/" style="float: left;">Division of Adult Parole Operations</a><br>
+                <a href="http://www.calsheriffs.org/" style="float: left;">County Sheriff Departments</a><br>
+                <a href="http://www.cdcr.ca.gov/rehabilitation/os.html" style="float: left;">California Department of Corrections and Rehabilitation - Office of Offender Services</a><br>
+                <a href="http://www.urban.org/projects/tjc/" style="float: left;">The Urban Institute - Transition from Jail to Community Initiative</a><br>
+                <a href="http://nicic.gov/jailtransition" style="float: left;">National Institute of Corrections - Transition from Jail to Community</a><br>
+
+
+
         </body>
-
-        <p>Use the map below to find an unemployment office near you! Below, you can also find a list of re-entry programs for California former offenders.</p>
-
-        <a href="http://jailstojobs.org/html/ca_training_benefits.html" style="float: left;">Jail to Jobs - California Training Benefits Program</a><br>
-        <a href="http://hirenetwork.org/content/california" style="float: left;">California National HIRE Network</a><br>
-        <a href="http://sandiego.networkofcare.org/veterans/services/agency.aspx?pid=CHANGEChoosingANewGenerationofExcellence_870_17_0" style="float: left;">CHANGE - Choosing A New Generation of Excellence</a><br>
-        <a href="http://www.cdcr.ca.gov/rehabilitation/female-offender-treatment-employment-program.html" style="float: left;">Female Offender Treatment and Employment Program</a><br>
-        <a href="http://pia.ca.gov/OffenderDevelopment/IEP.aspx" style="float: left;">California Prison Industry Authority - Inmate Employability Program</a><br>
-        <a href="http://www.secondchanceprogram.org/job-readiness-training/" style="float: left;">Second Chance</a><br>
-        <a href="http://www.cdcr.ca.gov/Parole/" style="float: left;">Division of Adult Parole Operations</a><br>
-        <a href="http://www.calsheriffs.org/" style="float: left;">County Sheriff Departments</a><br>
-        <a href="http://www.cdcr.ca.gov/rehabilitation/os.html" style="float: left;">California Department of Corrections and Rehabilitation - Office of Offender Services</a><br>
-        <a href="http://www.urban.org/projects/tjc/" style="float: left;">The Urban Institute - Transition from Jail to Community Initiative</a><br>
-        <a href="http://nicic.gov/jailtransition" style="float: left;">National Institute of Corrections - Transition from Jail to Community</a><br>
-
 </html>

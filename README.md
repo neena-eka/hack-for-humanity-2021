@@ -6,8 +6,11 @@ People released from prison face a lot of obstacles due to their conviction hist
 
 This website aims to make previously incarcerated people's integration into society easier. Keep reading to find more about the site's capabilities!
 
-
 ## Tour the Site!
+
+### The Black & White Design
+
+When people come out of prison, some of them are unfamiliar by their independence and are overwhelmed by the outside world. As a result, many of them become incarcerated to regain access to the same structure. Therefore, we aimed to make our website as simple and user-friendly as possible by using black and white fonts and a simplistic structure, so we could present our information in an un-overwhelming way.
 
 ### Homepage
 
