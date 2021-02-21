@@ -4,50 +4,51 @@
   <h1>Search Counties</h1>
 
   <script type="text/javascript">
-    async function funcSearch() {
+     async function funcSearch() {
       alert("Hello");
-      //var request = new XMLHttpRequest();
-      //var apiUrl = 'https://my-h4h-job-search.search.windows.net/indexes/h4h-search-index/docs?api-key=120DCCBC69508128BF0A4F72BD958BB5&api-version=2020-06-30&search=Santa';
-      // request.open('GET', apiUrl);
-      // request.onload = function () {
-      //
-      //   var data = JSON.stringify(this.response);
-      //   console.log(data);
-      //   alert(data);
-      //    if (request.status >= 200 && request.status < 400)
-      //    {
-      //      alert(data);
-      //    }
-      //    else
-      //    {
-      //      alert("Fail");
-      //      console.log('error');
-      //    }
-      // }
-      //
+      var request = new XMLHttpRequest();
+      var apiUrl = 'https://my-h4h-job-search.search.windows.net/indexes/h4h-search-index/docs?api-key=120DCCBC69508128BF0A4F72BD958BB5&api-version=2020-06-30&search=Santa';
+      request.open('GET', apiUrl);
+      request.onload = function () {
+
+        var data = JSON.stringify(this.response);
+        console.log(data);
+        alert(data);
+         if (request.status >= 200 && request.status < 400)
+         {
+           alert(data);
+         }
+         else
+         {
+           alert("Fail");
+           console.log('error');
+         }
+      }
+
       // request.send();
-      const { SearchClient, AzureKeyCredential} = require("@azure/search-documents");
-      const indexName="h4h-search-index";
-      const apiKey = "120DCCBC69508128BF0A4F72BD958BB5";
-      const client = new SearchClient('https://my-h4h-job-search.search.windows.net',indexName, new AzureKeyCredential(apiKey)
-      );
-      //async function main() {
-        alert("Hi");
-        const searchResults = await client.search('name:Santa', {
-          queryType: "full",
-          searchMode: "all",
-        });
-        for await (const result of searchResults.results) {
-          console.log(result);
-        }
+      // const { SearchClient, AzureKeyCredential} = require("@azure/search-documents");
+      // const indexName="h4h-search-index";
+      // const apiKey = "FEFB1D252AF38F4BB7C77ED36BF7BFD2";
+      // const client = new SearchClient("https://my-h4h-job-search.search.windows.net/",indexName, new AzureKeyCredential(apiKey));
+      // async function maint() {
+      //   alert("Hi");
+      //
+      //   // //const indexName="nycjobs";
+      //   // //const apiKey="252044BE3886FE4A8E"
+      //
+      //
+      //   const searchResults = await client.search("Santa", { top: 3 });
+      //   alert("Hi again");
+        // for await (const result of searchResults.results) {
+        //   console.log(result);
+        // }
       //}
       //main();
-    }
-
+      }
   </script>
 
   <input id="txtInput" type="text" value="" style="width:20%"/>
-  <button onClick="funcSearch()">Search</button>
+  <button onclick="maint()">Search</button>
 
 </body>
 </html>
