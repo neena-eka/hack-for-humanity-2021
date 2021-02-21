@@ -1,4 +1,4 @@
-# Hack for Humanity 2021
+# Re-Entry Resort
 
 ## About the Project
 
