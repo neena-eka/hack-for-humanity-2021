@@ -7,8 +7,11 @@ People released from prison face a lot of obstacles due to their conviction hist
 This website aims to make previously incarcerated people's integration into society easier. Keep reading to find more about the site's capabilities!
 
 
-## A Tour of the Site
+## Tour the Site!
 
+### Homepage
+
+The homepage displays a welcome message to the viewer.
 
 ### ID Resources
 

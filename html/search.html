@@ -24,24 +24,23 @@
       request.onload = function () {
         alert(this.response);
          var data = JSON.stringify(this.response);
-         alert(data);
+         //alert(data);
          if (request.status >= 200 && request.status < 400)
          {
-           alert("Success");
+           alert(data[0].length);
            // data.forEach((id) => {
            //   alert(id.name);
            //   console.log(id.name);
            //   console.log(id.address);
            //   console.log(id.phoneNumber);
            //  })
-           alert(data(1).name)
           // for (var i=0;i<data.length;i++)
           // {
           //   var name = data[i].name;
           //   alert(name);
           // }
          }
-         elseÓ
+         else
          {
            alert("Fail");
            console.log('error');
