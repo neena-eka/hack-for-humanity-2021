@@ -1,4 +1,4 @@
-# Re-Entry Resort
+# Re-Entry Hub
 
 ## About the Project
 
