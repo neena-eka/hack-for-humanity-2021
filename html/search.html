@@ -4,52 +4,44 @@
   <h1>Search Counties</h1>
 
   <script type="text/javascript">
-    function funcSearch() {
+    async function funcSearch() {
       alert("Hello");
-      //var searchText = txtInput.text;
-      var request = new XMLHttpRequest();
-      var apiUrl = 'https://my-h4h-job-search.search.windows.net/indexes/h4h-search-index/docs?api-key=120DCCBC69508128BF0A4F72BD958BB5&api-version=2020-06-30&search=*';
-
-      // fetch(apiUrl).then(response => {
-      //   return response.json();
-      // }).then(data => {
-      //   var t = JSON.parse('{"name": "", "address": "", "phoneNumber": ""}');
-      //   var obj = JSON.parse(t);
-      //   alert(obj.name);
-      //   //work with JSON data here
-      // }).catch(err => {
-      //   alert(err);
-      // });
-      request.open('GET', apiUrl);
-      request.onload = function () {
-        //alert(this.response);
-        var data=JSON.parse(this.response);
-        //var newdata = JSON.parse(data);
-         //var data = JSON.stringify(this.response);
-         //alert(data);
-         if (request.status >= 200 && request.status < 400)
-         {
-           alert(data[0]);
-           // data.forEach((id) => {
-           //   alert(id.name);
-           //   console.log(id.name);
-           //   console.log(id.address);
-           //   console.log(id.phoneNumber);
-           //  })
-          // for (var i=0;i<data.length;i++)
-          // {
-          //   var name = data[i].name;
-          //   alert(name);
-          // }
-         }
-         else
-         {
-           alert("Fail");
-           console.log('error');
-         }
-      }
-
-      request.send();
+      //var request = new XMLHttpRequest();
+      //var apiUrl = 'https://my-h4h-job-search.search.windows.net/indexes/h4h-search-index/docs?api-key=120DCCBC69508128BF0A4F72BD958BB5&api-version=2020-06-30&search=Santa';
+      // request.open('GET', apiUrl);
+      // request.onload = function () {
+      //
+      //   var data = JSON.stringify(this.response);
+      //   console.log(data);
+      //   alert(data);
+      //    if (request.status >= 200 && request.status < 400)
+      //    {
+      //      alert(data);
+      //    }
+      //    else
+      //    {
+      //      alert("Fail");
+      //      console.log('error');
+      //    }
+      // }
+      //
+      // request.send();
+      const { SearchClient, AzureKeyCredential} = require("@azure/search-documents");
+      const indexName="h4h-search-index";
+      const apiKey = "120DCCBC69508128BF0A4F72BD958BB5";
+      const client = new SearchClient('https://my-h4h-job-search.search.windows.net',indexName, new AzureKeyCredential(apiKey)
+      );
+      //async function main() {
+        alert("Hi");
+        const searchResults = await client.search('name:Santa', {
+          queryType: "full",
+          searchMode: "all",
+        });
+        for await (const result of searchResults.results) {
+          console.log(result);
+        }
+      //}
+      //main();
     }
 
   </script>
