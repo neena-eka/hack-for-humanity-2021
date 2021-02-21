@@ -1,0 +1,60 @@
+<html>
+<body>
+
+  <h1>Search Counties</h1>
+
+  <script type="text/javascript">
+    function funcSearch() {
+      alert("Hello");
+      //var searchText = txtInput.text;
+      var request = new XMLHttpRequest();
+      var apiUrl = 'https://my-h4h-job-search.search.windows.net/indexes/h4h-search-index/docs?api-key=120DCCBC69508128BF0A4F72BD958BB5&api-version=2020-06-30&search=*';
+
+      // fetch(apiUrl).then(response => {
+      //   return response.json();
+      // }).then(data => {
+      //   var t = JSON.parse('{"name": "", "address": "", "phoneNumber": ""}');
+      //   var obj = JSON.parse(t);
+      //   alert(obj.name);
+      //   //work with JSON data here
+      // }).catch(err => {
+      //   alert(err);
+      // });
+      request.open('GET', apiUrl);
+      request.onload = function () {
+        alert(this.response);
+         var data = JSON.stringify(this.response);
+         alert(data);
+         if (request.status >= 200 && request.status < 400)
+         {
+           alert("Success");
+           // data.forEach((id) => {
+           //   alert(id.name);
+           //   console.log(id.name);
+           //   console.log(id.address);
+           //   console.log(id.phoneNumber);
+           //  })
+           alert(data(1).name)
+          // for (var i=0;i<data.length;i++)
+          // {
+          //   var name = data[i].name;
+          //   alert(name);
+          // }
+         }
+         elseÓ
+         {
+           alert("Fail");
+           console.log('error');
+         }
+      }
+
+      request.send();
+    }
+
+  </script>
+
+  <input id="txtInput" type="text" value="" style="width:20%"/>
+  <button onClick="funcSearch()">Search</button>
+
+</body>
+</html>
