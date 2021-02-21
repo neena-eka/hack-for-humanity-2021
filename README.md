@@ -19,7 +19,7 @@ The homepage displays a welcome message to the viewer.
 
 ### ID Resources
 
-The ID resources tab of our website provides a comprehensive guide on how to go about obtaining (or renewing) your IDs. From step by step instructions, to lists of required identification materials, to maps, this section of the website has it all!
+The ID resources tab of our website provides a comprehensive guide on how to go about obtaining (or renewing) your IDs. From step by step instructions, to lists of required identification materials, to maps, this section of the website has it all! Using Microsoft Azure, the user is able to search for Birth Certificate Offices for each county in CA.
 
 ### Job Search
 
