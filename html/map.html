@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Map</title>
+
+    <style type="text/css">
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+      }
+    </style>
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: 36.7783, lng: 119.4179 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: uluru
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+
+        google.maps.event.addDomListener(marker, 'click', function() {
+          window.location = marker.url;
+
+          var infowindow = new google.maps.InfoWindow();
+          var arrayat = [];
+          var arraylng = [];
+
+          for (var i = 0; i < arraylng.length; i++) {
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(arraylng[i], arraylat[i]),
+              map: map
+            });
+
+            makeInfoWindowEvent(map, infowindow, "test" + i, marker);
+
+            markers.push(marker);
+          }
+
+
+          function makeInfoWindowEvent(map, infowindow, contentString, marker) {
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent(contentString);
+              infowindow.open(map, marker);
+            });
+
+
+        });
+
+      }
+    </script>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO3fKOqfMuI5nkRg34fkladdZETytH4YE&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  </body>
+</html>

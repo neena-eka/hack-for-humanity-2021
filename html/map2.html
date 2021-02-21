@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Google Maps Multiple Markers</title>
+  <script src="http://maps.google.com/maps/api/js?sensor=false"
+          type="text/javascript"></script>
+</head>
+<body>
+  <title>Hack for Humanity</title>
+  <h1><a style="text-decoration:none" href= "index.html">Hack for Humanity</a></h1>
+  <div id="map" style="width: 500px; height: 400px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+
+      <!-- Divya -->
+      ['Alhambra Social Security Administration Office: 900 S Garfield Ave Alhambra, CA - 91801. (800) 772-1213', 34.085420, -118.122570, 4],
+      ['Anaheim Social Security Administration Office: 900 S Harbor Blvd Anaheim, CA - 92805. (866)-657-3133', 33.821450, -117.915080, 5],
+      ['Antioch Social Security Administration Office: 2615 Crow Court Antioch, CA - 94509. (800) 772-1213', 38.009330, -121.840730, 3],
+      ['Auburn Social Security Administration Office: 11855 Edgewood Rd Auburn, CA - 95603. (866) 931-6087', 38.920940, -121.083500, 2],
+      ['Bakersfield Social Security Administration Office Haley St: 2575 Haley Street Bakersfield, CA - 93305. (866)-366-9558', 35.395620, 151.259302, 1],
+      ['Bakersfield Social Security Administration Office: 5300 Office Park Drive Bakersfield, CA - 93309. (866)-476-1489', 35.3659269, -119.0614593,6],
+      ['Berkeley Social Security Administration Office: 2045 Allston Way Berkeley, CA - 94704. (800) 772-1213', 37.8693192, -122.2692941, 1],
+      ['Blythe Social Security Administration Office: 74 E Hobson Way Blythe, CA - 92225. (800) 772-1213', 33.60998, -114.628526, 1],
+      ['Brea Social Security Administration Office: 3230 E Imperial Hwy Brea, CA - 92821. (866)-593-2757', 33.911107, -117.866085, 1],
+      ['Burbank Social Security Administration Office: 1420 W Olive Ave Burbank, CA - 91506. (888)-748-7699', 34.1694388, -118.3206602, 1],
+      ['Campbell Social Security Administration Office: 770 W Hamilton Ave Campbell, CA - 95008. (800) 772-1213', 37.2940405,-121.9629014, 1],
+      ['Chatsworth Social Security Administration Office: 20439 Nordhoff St Chatsworth, CA - 91311, (855)-727-3598', 34.2354579,-118.6028914, 1],
+      ['Chico Social Security Administration Office: 1370 E. LASSEN AVE, suite 150 Chico, CA - 95928. (866)-964-7585', 39.7732538,-121.84057, 1],
+      ['Chula Vista Social Security Administration Office: 626 L Street Chula Vista, CA - 91911. (800) 772-1213', 32.616393,-117.084865, 1],
+      ['Compton Social Security Administration Office: 171 E Compton Blvd Compton, CA - 90220. (800) 772-1213', 33.8960406,-118.2226541 , 1],
+      ['Crescent City Social Security Administration Office: 560 E Hoover Ave Crescent City, CA - 95531. (855)-727-3600', 41.7710077,-124.1977718 , 1],
+      ['Daly City Social Security Administration Office: 355 Gellert Blvd Daly City, CA - 94015. (800) 772-1213', 37.663807,-122.469128 , 1],
+      ['Delano Social Security Administration Office: 2234 Girard Street Delano, CA - 93215. (866)-635-0287', 35.7877482,-119.2490549, 1],
+      ['El Cajon Social Security Administration Office: 846 Arnele Ave El Cajon, CA - 92020. (800)-772-1213', 32.8040103,-116.9739892, 1],
+      ['El Centro Social Security Administration Office: 3007 N Imperial Ave El Centro, CA - 92243. (866)-593-5680', 32.8151669,-115.568964, 1],
+      ['El Monte Social Security Administration Office: 9351 Telstar Ave. El Monte, CA - 91731. (800)-772-1213', 34.0688948,-118.065161, 1],
+      ['Eureka Social Security Administration Office: 3144 Broadway Eureka, CA - 95501. (866)-828-1991', 40.7896562,-124.1818797, 1],
+      ['Fairfield Social Security Administration Office: 2500 Hilborn Road Fairfield, CA - 94534. (800)-772-1213', 38.276722,-122.052486, 1],
+      ['Fontana CA Social Security Administration Office: 10668 Sierra Ave Fontana, CA - 92337. (800)-772-1213', 34.059974,-117.435653, 1],
+      ['Fountain Valley Social Security Administration Office: 17075 Newhope Street, suite B Fountain Valley, CA - 92708. (877)-304-1566', 33.714906,-117.9292391, 1],
+      ['Fremont Social Security Administration Office: 3100 Mowry Ave Fremont, CA - 94538. (888)-632-7073', 37.5540551,-121.9832927, 1],
+      ['Fresno Social Security Administration Office Locust Ave: 640 W Locust Avenue Fresno, CA - 93650. (866)-931-9041', 36.8401662,-119.8049253, 1],
+      ['Fresno Social Security Administration Office: 5140 E Olive Ave Fresno, CA - 93727. (866)-366-4918', 36.8401662,-119.8049253, 1],
+      ['Fresno Social Security Administration Office Fulton Mall: 865 Fulton Mall Fresno, CA - 93721. (877)-311-2640', 36.7355297,-119.7915206, 1],
+      ['', 33.79007,-117.967348, 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+
+      <!-- Kamya -->
+      ['La Mesa Social Security Administration Office: 7961 University Ave La Mesa, CA - 91942. 800-772-1213',32.764360,-117.026460,1],
+      ['Lakeport Social Security Administration:991 Parallel DriveLakeport, CA - 95453.(888)676-2666',39.035180,-122.926510,1],
+      ['Lancaster Social Security Administration Office:44451 N 20th Street W Lancaster, CA - 93534.(800)-772-1213',34.690630-118.166700,1],
+      ['Lodi Social Security Administration Office: 1110 W Kettleman Lane, suite 3Lodi, CA - 95240. 888-257-2641',38.114070,-121.286380,1],
+      ['Long Beach Social Security Administration Office: 2005 Long Beach Blvd Long Beach, CA - 90806. 888-256-2631',33.794050,-118.189820,1],
+      ['Los Angeles Social Security Administration Office: 4000 Wilshire Blvd Los Angeles, CA - 90010. 866-964-7592',34.06169509887695,-118.31451416015625,1],
+      ['Los Angeles Social Security Administration Office:215 N Soto Street Los Angeles, CA - 90033. 866-964-2035',34.0420503,-118.2109445,1],
+      ['Los Angeles Social Security Administration Office 12429 S Avalon Blvd Los Angeles, CA - 90061. 877-836-1558',33.92607116699219,-118.26519012451172,1],
+      ['Los Angeles Social Security Administration Office 11500 W Olympic Blvd Los Angeles, CA - 90064 866-964-4779', 34.0366432,-118.4438339, 1],
+      ['Los Angeles Social Security Administration Office 3840 Crenshaw Blvd Los Angeles, CA - 90008 877-531-4693',34.01535415649414,-118.3351058959961,1]
+      ['Los Angeles Social Security Administration Office 1115 W Adams Blvd Los Angeles, CA - 90007 800-772-1213',34.03225,-118.285042,1],
+      ['Los Angeles Social Security Administration Office 611 W 6th Street Los Angeles, CA - 90017 800-772-1213', 34.0489393,-118.25540961,1],
+      ['Madera Social Security Administration Office 348 E Yosemite Ave Madera, CA - 93638. (877) 405-1453', 36.9636086,-120.0568183, 1],
+      ['Manteca Social Security Administration Office 510 Commerce Ct Manteca, CA - 95336 (866) 320-2587',36.104695,-86.132857,1],
+      ['Merced Social Security Administration Office 600 West Olive Ave Merced, CA - 95348 888-632-7069', 37.3188735,-120.4789326,1],
+      ['Mission Viejo Social Security Administration Office 26051 Acero Road Mission Viejo, CA - 92691 800-772-1213 ',33.6187576,-117.6765852,1],
+      ['']
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+
+        //['']
+      <!-- Maddie -->
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['', , , 1],
+      ['San Leandro Social Security Administration Office: 320 Davis Street San Leandro, CA - 94577. 866-331-2181', 33.745614, -117.84197, 1],
+      ['San Marcos Social Security Administration Office: 367 Via Vera Cruz San Marcos, CA - 92078. 866-614-4769', 33.745614, -117.84197, 1],
+      ['San Mateo Social Security Administration Office: 800 South Claremont St, suite 101 San Mateo, CA - 94402. 866-726-8193', 37.5633424, -122.3177702, 1],
+      ['Santa Ana Social Security Administration Office: 1851 East First Street, Fifth Floor Santa Ana, CA - 92705. 800-772-1213', 33.745614, -117.84197, 1],
+      ['Santa Cruz Social Security Administration Office: 169 Walnut Avenue Santa Cruz, CA - 95060. (800) 593-8523', 32.741376, -117.1635016, 1],
+      ['Santa Maria Social Security Administration Office: 2436 Professional Pkwy Santa Maria, CA - 93455. 866-331-2316', 34.91642379760742, -120.4383316040039, 1],
+      ['Sonora Social Security Administration Office: 745 Morning Star Dr Sonora, CA - 95370. 888-397-4125', 37.9844873, -120.3719484, 1],
+      ['Susanville Social Security Administration Office: 2603 Riverside Dr Susanville, CA - 96130. 855-420-8563', 40.4077969, -120.6373375, 1],
+      ['Torrance Social Security Administration Office: 20000 Mariner Avenue Torrance, CA - 90505. 877-319-0732', 33.850250244140625, -118.3496322631836, 1],
+      ['Ukiah Social Security Administration Office: 521 S 0rchard Ave Ukiah, CA - 95482. (888) 590-2706', 38.358739, -122.769063, 1],
+      ['Vallejo Social Security Administration Office: 106 Plaza Dr, Ste A Vallejo, CA - 94591. 888-808-5487', 38.1323331, -122.2155799, 1],
+      ['Victorville Social Security Administration Office: 13955 Park Ave Victorville, CA - 92392. 800-772-1213', 34.5044425, -117.3264031, 1],
+      ['Walnut Creek Social Security Administration Office: 1111 Civic Drive, suite 180 Walnut Creek, CA - 94596. 877-319-6042', 37.903846740722656, -122.05972290039062, 1],
+      ['West Covina Social Security Administration Office: 501 S Vincent Ave, suite 201 West Covina, CA - 91790. 800-772-1213', 34.0664657, -117.9283217, 1],
+      ['Whittier Social Security Administration Office: 7200 Greenleaf, suite 200. 800-772-1213', 33.976750, -118.037000, 1],
+      ['Yreka Social Security Administration Office: 1960 S. Oregon Street Yreka, CA - 96097. (888) 366-6145', 41.707800, -122.644550, 1],
+      ['Yucca Valley Social Security Administration Office: 56492 29 Palms Hwy Yucca Valley, CA - 92284. 877-325-7417', 34.121080, -116.431580, 1],
+      ['Palm Springs Social Security Administration Office: 4201 E Ramon Rd Palm Springs, CA - 92264. 877-873-9105', 33.815590, -116.501060, 1]
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 5,
+      center: new google.maps.LatLng(36.7783, -119.4179),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+</html>

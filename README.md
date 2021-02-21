@@ -16,6 +16,6 @@ Most former prisoners experience difficulty finding a job after release. During 
 
 The job search feature of our website is designed to help people who were formerly incarcerated find jobs. Upon entering their location, this tab allows the user to find resources in their area that can help with employment.
 
-### Meet the Team!
+## Meet the Team!
 
-Maddie Waldie, Neena Ekanathan, Kamya Krishnan, and Divya Syal are freshman Computer Science and Engineering majors at Santa Clara University.
+Maddie Waldie, Neena Ekanathan, Kamya Krishnan, and Divya Syal are freshman Computer Science and Engineering majors at Santa Clara University. They completed this project as a part of "Hack for Humanity."
