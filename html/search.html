@@ -1,22 +1,73 @@
 <html>
-<body>
+<body onLoad="funcSearch('*')">
 
-  <h1>Search Counties</h1>
+  <head>
+		<link rel="stylesheet" href="../css/style.css">
+	</head>
+	<body>
+		<!-- Title bar showing name -->
+		<title>Hack for Humanity</title>
+		<h1><a style="text-decoration:none; font-size: 60px;" href= "../index.html">Re-Entry Resort</a></h1>
+		<hr>
 
+		<!-- Navigation bar -->
+		<ul class="navigationBar">
+			<li><a style="text-decoration:none" href= "../index.html">Home</a></li>
+			<li><a style="text-decoration:none" href="resources.html"> ID Resources</a></li>
+			<li><a style="text-decoration:none" href="jobSearch.html">Job Search</a></li>
+		</ul>
+		<hr>
+
+  <h1>Search Birth Certificate Offices Per County</h1>
   <script type="text/javascript">
-     async function funcSearch() {
-      alert("Hello");
+     function funcSearch(srchStr) {
       var request = new XMLHttpRequest();
-      var apiUrl = 'https://my-h4h-job-search.search.windows.net/indexes/h4h-search-index/docs?api-key=120DCCBC69508128BF0A4F72BD958BB5&api-version=2020-06-30&search=Santa';
+      if (srchStr == null) {
+         srchStr = document.getElementById('txtInput').value;
+      }
+      var apiUrl = 'https://my-h4h-job-search.search.windows.net/indexes/h4h-search-index/docs?api-key=120DCCBC69508128BF0A4F72BD958BB5&api-version=2020-06-30&search=' + srchStr;
       request.open('GET', apiUrl);
       request.onload = function () {
-
-        var data = JSON.stringify(this.response);
-        console.log(data);
-        alert(data);
          if (request.status >= 200 && request.status < 400)
          {
-           alert(data);
+           var data = JSON.parse(this.response);
+           var datastr = JSON.parse(JSON.stringify(data.value));
+
+           var table = document.createElement("table");
+           var tr = table.insertRow(-1);
+           var col = [];
+            for (var i = 0; i < datastr.length; i++) {
+                for (var key in datastr[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = "County";
+            tr.appendChild(th);
+            th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = "Address";
+            tr.appendChild(th);
+            th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = "Phone Number";
+            tr.appendChild(th);
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < datastr.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 1; j < col.length-1; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = datastr[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
          }
          else
          {
@@ -25,7 +76,7 @@
          }
       }
 
-      // request.send();
+       request.send();
       // const { SearchClient, AzureKeyCredential} = require("@azure/search-documents");
       // const indexName="h4h-search-index";
       // const apiKey = "FEFB1D252AF38F4BB7C77ED36BF7BFD2";
@@ -48,7 +99,7 @@
   </script>
 
   <input id="txtInput" type="text" value="" style="width:20%"/>
-  <button onclick="maint()">Search</button>
-
+  <button onclick="funcSearch()">Search</button>
+  <p id="showData"></p>
 </body>
 </html>
